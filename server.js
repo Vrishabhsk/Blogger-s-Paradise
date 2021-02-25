@@ -348,11 +348,6 @@ app.get("/logout",(req,res) => {
     res.redirect("/");
 })
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
-
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("server started on http://localhost:3000")
 });
