@@ -6,11 +6,11 @@
       <% if(!user.googleDisplayName && !user.facebookDisplayName) { %> 
       <input name="email" type="email" id="inputPassword" class="form-control" placeholder="Email">
       <% } %> 
-      <button class="w-100 btn btn-lg btn-success" type="submit">Update</button>
+      <button class="w-100 btn btn-lg btn-outline-success" type="submit">Update</button>
       <br><br>
     </form>
     <form action="/delete" method="POST">
-      <button class="w-100 btn btn-lg btn-danger" type="submit">Delete Profile and Posts</button>
+      <button class="w-100 btn btn-lg btn-outline-danger" type="submit">Delete Profile and Posts</button>
     </form>
   </main>
 <%- include("partials/footer") %>  

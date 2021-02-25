@@ -3,11 +3,11 @@
 <h1>Blogs</h1><br>
 <% content.reverse().forEach(singleContent => { %>
     <div class="prov-gap container-fluid blog">
-        <h2><%= singleContent.blogTitle %><p class="badge bg-danger text-wrap fs-5 text-name"><%= singleContent.blogUsername %></p> <p class="badge bg-success text-wrap fs-5 text-time"><%= singleContent.blogUploadDate %></p></h2>
+        <h2><%= singleContent.blogTitle %></h2><span class="badge bg-danger text-wrap fs-5"><%= singleContent.blogUsername %></span> <span class="badge bg-success text-wrap fs-5"><%= singleContent.blogUploadDate %></span>
         <% if(singleContent.blogContent.length > 150) { %> 
         <p><%= singleContent.blogContent.substring(0,150) %>...&nbsp; <a href="posts/<%= singleContent._id %>">Read Full Blog</a></p>
         <% } else { %>
-        <p><%= singleContent.blogContent %></p>
+        <p ><%= singleContent.blogContent %></p>
         <% } %>
     </div>
 <% }); %> 

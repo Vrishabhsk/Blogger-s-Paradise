@@ -13,7 +13,7 @@
 <% content.forEach(singleContent => { %>
 <form action="/handlePosts" method="POST">
     <div class="prov-gap container-fluid blog">
-        <h2><%= singleContent.blogTitle %><button type="submit" class="delete btn btn-outline-warning btn-sm">DELETE</button></h2>
+        <h2><%= singleContent.blogTitle %><button type="submit" class="delete btn float-end btn-outline-warning btn-sm">DELETE</button></h2>
         <input type="hidden" name="id" value="<%= singleContent._id %>">
         <% if(singleContent.blogContent.length > 150) { %> 
         <p><%= singleContent.blogContent.substring(0,150) %>&nbsp; <a href="posts/<%= singleContent._id %>">Read Full Blog</a></p>

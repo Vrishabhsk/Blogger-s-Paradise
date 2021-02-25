@@ -31,21 +31,8 @@ p{
   margin-bottom: 10px;
 }
 
-.text-name {
-    margin-left: 500px;
-    margin-top: 10px;
-    left: 73rem;
-}
-
-.text-time {
-    margin-top: 10px;
-    left: 80rem;
-}
-
 .delete {
-    position: absolute;
-    margin-top: 7px;
-    left: 83.5rem;
+  margin-top: 7px;
 }
 
 .navbar {
