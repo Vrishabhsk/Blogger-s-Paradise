@@ -26,10 +26,8 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use(passport.session());
-
-uri = "mongodb+srv://"+ process.env.USER +":"+ process.env.PASS +"@cluster0.ueenf.mongodb.net/bloggersParadiseDB";
-
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+ 
+mongoose.connect("mongodb+srv://VrishabhJ:mongoPass@cluster0.ueenf.mongodb.net/bloggersParadiseDB", {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
 const blogSchema = new mongoose.Schema({
     blogUsername: String,
