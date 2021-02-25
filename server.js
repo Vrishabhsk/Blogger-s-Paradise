@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config({ silent: process.env.NODE_ENV === 'production' });
 const express = require('express')
 const ejs = require('ejs')
 const bodyParser = require('body-parser')
