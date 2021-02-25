@@ -1,0 +1,147 @@
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 90px;
+  font-family: "Inconsolata", monospace;
+}
+
+h1, .nav-link, h2, p {
+  font-weight: 800;
+}
+
+h2{
+  font-size: 2rem;
+}
+
+p{
+  font-size: 1.3rem;
+}
+
+.navbar-collapse {
+  display: flex;
+  
+}
+
+.nav-link, .c {
+  font-size: 1.2rem;
+}
+
+.about-btn {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.text-name {
+    position: absolute;
+    margin-top: 10px;
+    left: 73rem;
+}
+
+.text-time {
+    position: absolute;
+    margin-top: 10px;
+    left: 80rem;
+}
+
+.delete {
+    position: absolute;
+    margin-top: 7px;
+    left: 83.5rem;
+}
+
+.navbar {
+    background-color: #48426d;
+    padding: 10px 120px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.social-google {
+  margin-top: 50px;
+}
+
+.social-facebook {
+  margin-top: 18px;
+}
+
+.color {
+  margin-right: 10px;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    padding-left: 35px;
+    color: #fff;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    padding: 10px 10px 5px 10px;
+    text-align: center;
+    width: 100%; 
+    color: #fff;
+    background: #48426d; 
+}
+
+.foot {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.btn {
+    border: 1px solid;
+    padding: 10px;
+}
+
+.btn:hover {
+    box-shadow: 3px 6px #888888;
+    transition: 0.2s;
+}
+
+.blog {
+    border: 2px solid;
+    box-shadow: 9px 8px grey;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 70px auto 100px auto;
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  #inputPassword {
+      margin-top: 15px;
+  }
+
+  .prov-gap {
+    margin-bottom: 20px;
+  }

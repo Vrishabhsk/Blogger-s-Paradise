@@ -1,0 +1,16 @@
+<%- include("partials/header") %>
+<main class="form-signin">
+    <form action="/update" method="POST">
+      <h1 class="h3 mb-3 fw-normal">Update Profile</h1>
+      <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" autofocus>
+      <% if(!user.googleDisplayName && !user.facebookDisplayName) { %> 
+      <input name="email" type="email" id="inputPassword" class="form-control" placeholder="Email">
+      <% } %> 
+      <button class="w-100 btn btn-lg btn-success" type="submit">Update</button>
+      <br><br>
+    </form>
+    <form action="/delete" method="POST">
+      <button class="w-100 btn btn-lg btn-danger" type="submit">Delete Profile and Posts</button>
+    </form>
+  </main>
+<%- include("partials/footer") %>  

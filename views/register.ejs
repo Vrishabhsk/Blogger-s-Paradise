@@ -1,0 +1,41 @@
+<%- include("partials/header") %>
+<br>
+<% if(typeof alert != "undefined") { %> 
+  <% alert.forEach((error) => { %> 
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= error.msg %> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% }) %>
+    <% } %>
+    
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-4">  
+      <main class="form-signin">
+        <form id="form" action="/register" method="POST">
+            <h1 class="h3 mb-3 fw-normal">Register</h1>
+            <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Enter Username" required autofocus>
+            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address">
+            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input name="confirmPassword" type="password" id="inputPassword-re" class="form-control" placeholder="Confirm Password" requiredire>
+            <button class="w-100 btn btn-lg btn-success pass" type="submit">Register</button>
+        </form>
+      </main>
+    </div>
+    <div class="col-sm-4">
+      <main class="form-signin">
+        <a class="social-google btn btn-block btn-outline-danger" href="auth/google" role="button">
+          <i class="color fab fa-google"></i>Sign up with Google
+        </a>
+        <a class="social-facebook btn btn-block btn-outline-primary" href="auth/facebook" role="button">
+          <i class="color fab fa-facebook-square"></i>Sign up with Facebook
+        </a>
+      </main>
+    </div>
+  </div>
+</div>
+  
+    
+  
+<%- include("partials/footer") %>  

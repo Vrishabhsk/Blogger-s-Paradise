@@ -1,0 +1,15 @@
+<%- include('partials/header') %> 
+<br>
+<h1>Blogs</h1><br>
+<% content.reverse().forEach(singleContent => { %>
+    <div class="prov-gap container-fluid blog">
+        <h2><%= singleContent.blogTitle %><p class="badge bg-danger text-wrap fs-5 text-name"><%= singleContent.blogUsername %></p> <p class="badge bg-success text-wrap fs-5 text-time"><%= singleContent.blogUploadDate %></p></h2>
+        <% if(singleContent.blogContent.length > 150) { %> 
+        <p><%= singleContent.blogContent.substring(0,150) %>...&nbsp; <a href="posts/<%= singleContent._id %>">Read Full Blog</a></p>
+        <% } else { %>
+        <p><%= singleContent.blogContent %></p>
+        <% } %>
+    </div>
+<% }); %> 
+<br><br>
+<%- include('partials/footer') %> 

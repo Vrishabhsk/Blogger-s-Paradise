@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+<br>
+<% if(user.googleDisplayName) { %>
+    <h1>Welcome <%= user.googleDisplayName %> </h1>
+<% } else if(user.facebookDisplayName) { %>
+    <h1>Welcome <%= user.facebookDisplayName %> </h1>
+<% } else { %>
+    <h1>Welcome <%= user.username %> </h1>
+<% } %> 
+
+<h2>Here are your Blogs: </h2><br>
+<% if(content) { %> 
+<% content.forEach(singleContent => { %>
+<form action="/handlePosts" method="POST">
+    <div class="prov-gap container-fluid blog">
+        <h2><%= singleContent.blogTitle %><button type="submit" class="delete btn btn-outline-warning btn-sm">DELETE</button></h2>
+        <input type="hidden" name="id" value="<%= singleContent._id %>">
+        <% if(singleContent.blogContent.length > 150) { %> 
+        <p><%= singleContent.blogContent.substring(0,150) %>&nbsp; <a href="posts/<%= singleContent._id %>">Read Full Blog</a></p>
+        <% } else { %>
+        <p><%= singleContent.blogContent %></p>
+        <% } %>
+    </div>
+</form>
+<% }) %> 
+<% } else { %> 
+    <div class="container-fluid">
+        <h3>You have Not Posted anything Yet</h3>
+    </div>
+<% } %>
+<br><br>
+<%- include("partials/footer") %> 

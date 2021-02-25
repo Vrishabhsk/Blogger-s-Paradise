@@ -1,0 +1,42 @@
+<%- include("partials/header") %>
+<br>
+
+<% if(typeof alert != "undefined") { %> 
+  <% alert.forEach((error) => { %> 
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= error.msg %> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% }) %>
+<% } %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <main class="form-signin">
+        <form action="/login" method="POST">
+          <h1 class="h3 mb-3 fw-normal">Log In</h1>
+          <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+          <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <button class="w-100 btn btn-lg btn-success" type="submit">Log in</button>
+          <br><br>
+          <a href="register" class="nav-link" style="text-decoration: underline;">New User? Register Here</a>
+        </form>
+      </main>
+    </div>
+    <div class="col-4">
+      <main class="form-signin">
+        <a class="social-google btn btn-block btn-outline-danger" href="auth/google" role="button">
+          <i class="color fab fa-google"></i>Log in with Google
+        </a>
+        <a class="social-facebook btn btn-block btn-outline-primary" href="auth/facebook" role="button">
+          <i class="color fab fa-facebook-square"></i>Log in with Facebook
+        </a>
+      </main> 
+    </div>
+  </div>
+</div>
+
+
+
+<%- include("partials/footer") %>  

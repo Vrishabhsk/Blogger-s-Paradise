@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<br>
+<h1>About Blogger's Paradise</h1><br>
+<p>This is a place where bloggers can express their inner artist to the world
+    and show how there are no bounds to being creative in this world. This is their stage to show their
+    perpective of the World and feel no boundary in representing it.</p>
+<p>Created by Vrishabh Jasani</p>
+<p>Tools and Technologies used:
+    <% var frontEndTools = ["HTML","CSS","JS","BOOTSTRAP"]; %>
+    <% var backEndTools = ["NODE.JS","EXPRESS.JS","MONGODB","EJS"] %>  
+    <p>FrontEnd:</p>
+    <% frontEndTools.forEach(tool =>  { %>
+        <button type="button" class="about-btn btn btn-outline-dark"><%= tool %></button>
+    <% }) %> 
+    <p>BackEnd:</p>
+    <% backEndTools.forEach(tool => { %>
+            <button type="button" class="about-btn btn btn-outline-danger"><%= tool %></button>
+        <% }) %> 
+</p>
+<br>
+<%- include('partials/footer') %> 
