@@ -32,13 +32,12 @@ p{
 }
 
 .text-name {
-    position: absolute;
+    margin-left: 500px;
     margin-top: 10px;
     left: 73rem;
 }
 
 .text-time {
-    position: absolute;
     margin-top: 10px;
     left: 80rem;
 }

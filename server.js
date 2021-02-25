@@ -27,7 +27,7 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
-uri = "mongodb+srv://"+ process.env.USER +":"+ process.env.PASS +"@cluster0.ueenf.mongodb.net/bloggersParadiseDB"
+uri = "mongodb+srv://"+ process.env.USER +":"+ process.env.PASS +"@cluster0.ueenf.mongodb.net/bloggersParadiseDB";
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
