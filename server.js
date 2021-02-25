@@ -1,4 +1,4 @@
-require('dotenv').config({ silent: process.env.NODE_ENV === 'production' });
+require("dotenv").config();
 const express = require('express')
 const ejs = require('ejs')
 const bodyParser = require('body-parser')
@@ -26,8 +26,10 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use(passport.session());
- 
-mongoose.connect("mongodb+srv://VrishabhJ:mongoPass@cluster0.ueenf.mongodb.net/bloggersParadiseDB", {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+
+uri = "mongodb+srv://"+ process.env.USER +":"+ process.env.PASS +"@cluster0.ueenf.mongodb.net/bloggersParadiseDB"
+
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
 const blogSchema = new mongoose.Schema({
     blogUsername: String,
@@ -68,7 +70,7 @@ passport.serializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/bloggersparadise",
+    callbackURL: "https://protected-temple-00379.herokuapp.com/auth/google/bloggersparadise",
     proxy: true
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -81,7 +83,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/bloggersparadise"
+    callbackURL: "https://protected-temple-00379.herokuapp.com/auth/facebook/bloggersparadise"
   },
   function(accessToken, refreshToken, profile, cb) {
     displayName = profile.displayName.split(" ");
