@@ -29,9 +29,16 @@
                 <% } %> 
                 <a class="nav-link" href="about">About</a>
                 <% if(isUser) { %> 
-                <a class="nav-link" href="myposts">My Posts</a>
-                <a class="nav-link" href="update">Update Profile</a>
-                <a class="nav-link" href="logout">Logout</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="nav-link" href="myposts">My Posts</a></li>
+                    <li><a class="nav-link" href="update">Update Profile</a></li>
+                    <li><a class="nav-link" href="logout">Logout</a></li>
+                  </ul>
+                </li>
                 <% } else { %> 
                 <a class="nav-link" aria-current="page" href="login">Login</a>
                 <% } %> 
