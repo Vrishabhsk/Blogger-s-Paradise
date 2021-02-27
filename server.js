@@ -17,6 +17,8 @@ app.set('view engine', 'ejs')
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+//cookies and session
 app.use(session({ 
     secret: process.env.SECRET,
     resave: false,
@@ -27,10 +29,12 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
+//url for connecting to mongo-db
 uri = "mongodb+srv://"+ process.env.USER +":"+ process.env.PASS +"@cluster0.ueenf.mongodb.net/bloggersParadiseDB";
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
+//blog
 const blogSchema = new mongoose.Schema({
     blogUsername: String,
     blogTitle: String,
@@ -38,6 +42,7 @@ const blogSchema = new mongoose.Schema({
     blogUploadDate: String
 });
 
+//user
 const userSchema = new mongoose.Schema({
     username: String,
     email: String,
@@ -49,6 +54,7 @@ const userSchema = new mongoose.Schema({
     userBlogs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Blog"}]
 });
 
+//for OAuth2.0
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
@@ -67,6 +73,7 @@ passport.serializeUser(function(user, done) {
     });
   });
 
+//Google OAuth2.0
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -80,6 +87,7 @@ passport.use(new GoogleStrategy({
   }
 ));
 
+//Facebook OAuth
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
@@ -93,6 +101,7 @@ passport.use(new FacebookStrategy({
   }
 ));
 
+//home page
 app.get("/",(req,res) => {
     Blog.find({},(err,blogsFound) => {
         if(err) throw err;
@@ -100,6 +109,7 @@ app.get("/",(req,res) => {
     })
 });
 
+//Registering using Google Account
 app.get("/auth/google",
     passport.authenticate("google",{ scope: ["profile"] })
 );
@@ -111,6 +121,7 @@ app.get("/auth/google/bloggersparadise",
   }
 );
 
+//Registering using Facebook Account
 app.get("/auth/facebook",
   passport.authenticate('facebook'));
 
@@ -121,6 +132,7 @@ app.get("/auth/facebook/bloggersparadise",
   }
 );
 
+//Composing Blog directory
 app.get("/compose",(req,res) => {
     if(req.isAuthenticated())
         res.render("compose",{isUser: true, isHome: false});
@@ -158,6 +170,7 @@ app.post("/compose",(req,res) => {
     });
 })
 
+//viewing individual blog
 app.get("/posts/:blogId", (req,res) => {
     const blog = req.params.blogId;
     if(blog==="about")
@@ -176,16 +189,19 @@ app.get("/posts/:blogId", (req,res) => {
     }
 })
 
+//information about the project
 app.get("/about",(req,res) => {
     res.render("about",{isUser: req.isAuthenticated(), isHome: false});
 })
 
+//Login page
 app.get("/login",(req,res) => {
     res.render("login",{isUser: false, isHome: false})
 });
 
 
 app.post("/login",[
+    //validation check
     check("username")
         .custom(async value => {
             try {
@@ -217,13 +233,13 @@ app.post("/login",[
     }
 })
 
-
+//Register Page
 app.get("/register",(req,res) => {
     res.render("register",{isUser: false, isHome: false})
 })
 
 app.post("/register", [
-    //validation of user
+    //validation of entered details
     check("username","Username must be 3+ Characters long")
         .isLength({min: 3})
         .custom(async value => {
@@ -276,6 +292,7 @@ app.post("/register", [
     }
 });
 
+//viewing all the posts of the user
 app.get("/myposts",(req,res) => {
     if(req.isAuthenticated()) {
         User.find({_id: req.user._id}).populate("userBlogs").exec((err,foundBlogs) => {
@@ -287,6 +304,7 @@ app.get("/myposts",(req,res) => {
         res.redirect("/login");
 })
 
+//deleting the post and the link to the user
 app.post("/handlePosts",(req,res) => {
     Blog.findByIdAndDelete(req.body.id,(err,res) => {
         if(err) throw err;
@@ -300,6 +318,7 @@ app.post("/handlePosts",(req,res) => {
     res.redirect("myposts");
 })
 
+//updating user details (email and username only)
 app.get("/update",(req,res) => {
     if(req.isAuthenticated()){
         res.render("update",{isUser: true, isHome: false, user: req.user})
@@ -330,6 +349,7 @@ app.post("/update",(req,res) => {
     res.redirect("/");
 })
 
+//deleting all posts of the user and the user account
 app.post("/delete",(req,res) => {
     const blogs = req.user.userBlogs;
     for(let i = 0;i<blogs.length;i++){
@@ -343,6 +363,7 @@ app.post("/delete",(req,res) => {
     res.redirect("/"); 
 })
 
+//logout page
 app.get("/logout",(req,res) => {
     req.logout();
     res.redirect("/");
